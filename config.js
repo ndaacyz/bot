@@ -1,17 +1,28 @@
+require('dotenv').config();
+
 module.exports = {
     botName: "MyBot",
-    ownerNumber: ["6281234567890"], // Ganti dengan nomor owner (tanpa + dan spasi)
+    ownerNumber: ["6281234567890"],
     ownerName: "Admin",
-    prefix: ".", // Bisa diganti array: [".", "!", "#"]
+    prefix: ".",
     sessionName: "auth",
     databasePath: "./database",
     autoRead: false,
     autoTyping: false,
-    publicMode: true, // false = hanya owner yang bisa pakai bot
+    publicMode: true,
     footerMenu: "Powered by Baileys",
     linkPreview: false,
     timezone: "Asia/Jakarta",
-    autoSaveInterval: 30000, // 30 detik
+    autoSaveInterval: 30000,
+    
+    // ==== AI Configuration ====
+    ai: {
+        apiKey: process.env.ATRIA_API_KEY,
+        model: "Atria-Dawn-Preview",
+        maxHistoryLength: 10, // Jumlah history percakapan yang disimpan per user
+        systemPrompt: "Kamu adalah asisten AI yang ramah dan membantu dalam Bahasa Indonesia."
+    },
+
     defaultUser: {
         name: "",
         level: 1,
@@ -19,7 +30,8 @@ module.exports = {
         money: 0,
         banned: false,
         registered: false,
-        registeredAt: null
+        registeredAt: null,
+        aiHistory: [] // Menyimpan history percakapan AI
     },
     defaultGroup: {
         name: "",
